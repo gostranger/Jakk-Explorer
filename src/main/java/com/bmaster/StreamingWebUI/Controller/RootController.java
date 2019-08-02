@@ -1,4 +1,4 @@
-package com.bmaster.JakkExplorer.Controller;
+package com.bmaster.StreamingWebUI.Controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

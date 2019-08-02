@@ -1,4 +1,4 @@
-package com.bmaster.JakkExplorer.Controller;
+package com.bmaster.StreamingWebUI.Controller;
 
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.stereotype.Controller;

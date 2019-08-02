@@ -1,11 +1,11 @@
 ----------------------------------------------------------------
-Fri Aug 02 01:33:31 IST 2019:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016c-4ec7-c90d-00000b4aaf50 
-on database directory memory:/home/ghostranger/eclipse-workspace/JakkExplorer/testdb with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
+Fri Aug 02 18:45:38 IST 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016c-5278-b5c3-00000b35b758 
+on database directory memory:/home/ghostranger/eclipse-workspace/Streaming-Web-UI/testdb with class loader sun.misc.Launcher$AppClassLoader@75b84c92 
 Loaded from file:/home/ghostranger/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=1.8.0_212-8u212-b03-0ubuntu1.18.04.1-b03
-user.dir=/home/ghostranger/eclipse-workspace/JakkExplorer
+user.dir=/home/ghostranger/eclipse-workspace/Streaming-Web-UI
 os.name=Linux
 os.arch=amd64
 os.version=4.15.0-48-generic

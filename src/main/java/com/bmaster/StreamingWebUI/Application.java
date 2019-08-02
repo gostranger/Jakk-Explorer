@@ -1,4 +1,4 @@
-package com.bmaster.JakkExplorer;
+package com.bmaster.StreamingWebUI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
