@@ -10,7 +10,18 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class RootController {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(Model model) {
-		model.addAttribute("UserId", "Ghostranger");
-		return "index.html";
+		//model.addAttribute("UserId", "Ghostranger");
+		return "login.html";
+	}
+	
+	
+	@RequestMapping(path="/login", method=RequestMethod.POST)
+	public String login(Model model) {
+		return "layout.html";
+	}
+	
+	@RequestMapping(path="/dashboard", method=RequestMethod.GET)
+	public String dashboard(Model model) {
+		return "layout.html";
 	}
 }
