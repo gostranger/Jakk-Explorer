@@ -1,9 +1,6 @@
 <!DOCTYPE html>
-<html
-    lang="en"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4"
-    xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4" xmlns:th="http://www.thymeleaf.org">
 
 <head>
 
@@ -11,11 +8,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <title>sUI - Dashboard</title>
-
   <!-- Custom fonts for this template-->
   <link th:href="@{/vendor/fontawesome-free/css/all.min.css}" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+    rel="stylesheet">
 
   <!-- Custom styles for this template-->
   <link th:href="@{/css/sb-admin-2.min.css}" rel="stylesheet">
@@ -26,60 +23,23 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-
+    <div th:if="${sidepane=='dashboard'}">
+        <div th:replace="fragments/sidepanel :: sidepane_dashboard"></div>
+    </div>
+    <div th:if="${sidepane=='kafka'}">
+        <div th:replace="fragments/sidepanel :: sidepane_kafka"></div>
+    </div>
+    <div th:if="${sidepane=='jms'}">
+        <div th:replace="fragments/sidepanel :: sidepane_jms"></div>
+    </div>
+    <div th:if="${sidepane=='adls'}">
+        <div th:replace="fragments/sidepanel :: sidepane_adls"></div>
+    </div>
+    <div th:if="${sidepane=='kinesis'}">
+        <div th:replace="fragments/sidepanel :: sidepane_kinesis"></div>
+    </div>
+    
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/dashboard}">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fab fa-connectdevelop"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">Streaming UI</sup></div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-      
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/dashboard}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Interface
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-fw fa-cog"></i>
-          <span>Settings</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Theme Settings:</h6>
-            <a class="collapse-item" th:href="@{/settings/fonts}">Fonts</a>
-            <a class="collapse-item" th:href="@{/settings/color}">Color</a>
-          </div>
-        </div>
-      </li>
-
-      
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
-    </ul>
-    <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -101,7 +61,8 @@
             <div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">[[${UserId}]]</span>
                 <i class="fas fa-chevron-down"></i>
               </a>
@@ -131,88 +92,12 @@
         <!-- End of Topbar -->
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            <!--begining of the apps-->
-            <div class="row" >
-              <!--begin card kafka-->
-            <div class="col-xl-3 col-md-6 mb-4">
-                <a class="nav-link" th:href="@{/kafka}">
-              <div class="card border-left-primary shadow h-100 py-2">
-                  <div class="card-body">
-                    <div class="row no-gutters align-items-center">
-                      <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">KAFKA</div>
-                      </div>
-                      <div class="col-auto">
-                        <img th:src="@{/img/kafka.png}" style="height: 50px"/>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-              </a>
-                </div>
-                <!--/.end card kafka-->
-                <!--begin card jms-->
-                <div class="col-xl-3 col-md-6 mb-4">
-                  <a class="nav-link" th:href="@{/jms}">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">JMS</div>
-                        </div>
-                        <div class="col-auto">
-                          <img th:src="@{/img/jms.png}" style="height: 50px"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                </div>
-                <!--/.end card jsm-->
-                <!--begin card adls-->
-                <div class="col-xl-3 col-md-6 mb-4">
-                  <a class="nav-link" th:href="@{adls}">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">ADLS</div>
-                        </div>
-                        <div class="col-auto">
-                          <img th:src="@{/img/adls.png}" style="height: 50px"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                </div>
-                <!--/.end card adls-->
-                <!--begin card Kinesis-->
-                <div class="col-xl-3 col-md-6 mb-4">
-                  <a class="nav-link" th:href="@{kinesis}">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                      <div class="row no-gutters align-items-center">
-                        <div class="col mr-2">
-                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
-                          <div class="h5 mb-0 font-weight-bold text-gray-800">KINESIS</div>
-                        </div>
-                        <div class="col-auto">
-                          <img th:src="@{/img/kinesis.png}" style="height: 50px"/>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </a>
-                </div>
-                <!--/.end card Kinesis-->
-              </div>
-              <!--/.end of row-->
-          </div>    
+          <!--begining of the apps-->
+          <section layout:fragment="content">
+            <!-- content goes here-->
+          </section>
+
+        </div>
         <!-- /.container-fluid -->
       </div>
       <!-- End of Main Content -->
@@ -239,7 +124,8 @@
   </a>
 
   <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -265,4 +151,5 @@
   <!-- Custom scripts for all pages-->
   <script th:src="@{/js/sb-admin-2.min.js}" type="text/javascript"></script>
 </body>
+
 </html>

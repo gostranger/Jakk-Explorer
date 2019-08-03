@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <title>Dashboard</title>
+</head>
+
+<body>
+   <section layout:fragment="content">
+      <div class="row" >
+          <!--begin card kafka-->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <a class="nav-link" th:href="@{/kafka}">
+          <div class="card border-left-primary shadow h-100 py-2">
+              <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                  <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">KAFKA</div>
+                  </div>
+                  <div class="col-auto">
+                    <img th:src="@{/img/kafka.png}" style="height: 50px"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </a>
+            </div>
+            <!--/.end card kafka-->
+            <!--begin card jms-->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a class="nav-link" th:href="@{/jms}">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">JMS</div>
+                    </div>
+                    <div class="col-auto">
+                      <img th:src="@{/img/jms.png}" style="height: 50px"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+            <!--/.end card jsm-->
+            <!--begin card adls-->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a class="nav-link" th:href="@{adls}">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">ADLS</div>
+                    </div>
+                    <div class="col-auto">
+                      <img th:src="@{/img/adls.png}" style="height: 50px"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+            <!--/.end card adls-->
+            <!--begin card Kinesis-->
+            <div class="col-xl-3 col-md-6 mb-4">
+              <a class="nav-link" th:href="@{kinesis}">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                  <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                      <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Streaming</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800">KINESIS</div>
+                    </div>
+                    <div class="col-auto">
+                      <img th:src="@{/img/kinesis.png}" style="height: 50px"/>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </a>
+            </div>
+            <!--/.end card Kinesis-->
+          </div>
+          <!--/.end of row-->
+   </section> 
+    
+</body>
+
+
+</html>
