@@ -17,11 +17,39 @@ public class RootController {
 	
 	@RequestMapping(path="/login", method=RequestMethod.POST)
 	public String login(Model model) {
-		return "layout.html";
+		model.addAttribute("sidepane","dashboard");
+		return "redirect:/dashboard";
 	}
 	
 	@RequestMapping(path="/dashboard", method=RequestMethod.GET)
 	public String dashboard(Model model) {
-		return "layout.html";
+		model.addAttribute("sidepane","dashboard");
+		model.addAttribute("ab","yes");
+		return "dashboard/index.html";
 	}
+	@RequestMapping(path="/kafka",method=RequestMethod.GET)
+	public String kafkaTrigger(Model model) {
+		model.addAttribute("sidepane","kafka");
+		//model.addAttribute("ab","yes");
+		return "kafka/index.html";
+	}
+	
+	@RequestMapping(path="/jms",method=RequestMethod.GET)
+	public String jmsTrigger(Model model) {
+		model.addAttribute("sidepane","jms");
+		return "jms/index.html";
+	}
+	
+	@RequestMapping(path="/adls",method=RequestMethod.GET)
+	public String adlsTrigger(Model model) {
+		model.addAttribute("sidepane","adls");
+		return "adls/index.html";
+	}
+	
+	@RequestMapping(path="/kinesis",method=RequestMethod.GET)
+	public String kinesisTrigger(Model model) {
+		model.addAttribute("sidepane","kinesis");
+		return "kinesis/index.html";
+	}
+	
 }
