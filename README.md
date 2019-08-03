@@ -1,4 +1,4 @@
-# Jakk Explorer
+# Streaming Web UI
 
 This is a Web UI for all Streaming Tools Available in market.
 
