@@ -51,5 +51,11 @@ public class RootController {
 		model.addAttribute("sidepane","kinesis");
 		return "kinesis/index.html";
 	}
+
+	@RequestMapping(path="/hdfs",method=RequestMethod.GET)
+	public String hdfsTrigger(Model model) {
+		model.addAttribute("sidepane","hdfs");
+		return "hdfs/index.html";
+	}
 	
 }
