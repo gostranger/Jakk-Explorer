@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(path="/hdfs")
 public class HdfsController {
 	@RequestMapping(path="",method=RequestMethod.GET)
-	public String hdfsTrigger(Model model) {
+	public String hdfsRoot(Model model) {
 		model.addAttribute("sidepane","hdfs");
 		return "hdfs/index.html";
 	}

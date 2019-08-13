@@ -11,22 +11,15 @@ public class RootController {
 	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public String index(Model model) {
 		//model.addAttribute("UserId", "Ghostranger");
+		model.addAttribute("sidepane","dashboard");
 		return "dashboard/index.html";
 	}
 	
 	
-	@RequestMapping(path="/jms",method=RequestMethod.GET)
-	public String jmsTrigger(Model model) {
-		model.addAttribute("sidepane","jms");
-		return "jms/index.html";
-	}
 	
 	
-	@RequestMapping(path="/kinesis",method=RequestMethod.GET)
-	public String kinesisTrigger(Model model) {
-		model.addAttribute("sidepane","kinesis");
-		return "kinesis/index.html";
-	}
+	
+	
 
 	
 	

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @RequestMapping(path="/jms")
 public class JmsController {
 	@RequestMapping(path="",method=RequestMethod.GET)
-	public String jmsTrigger(Model model) {
+	public String jmsRoot(Model model) {
 		model.addAttribute("sidepane","jms");
 		return "jms/index.html";
 	}
