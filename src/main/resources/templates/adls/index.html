@@ -1,16 +1,58 @@
 <!DOCTYPE html>
-<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
-    layout:decorate="~{layout}">
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}">
 
 <head>
-    <meta charset="UTF-8">
-    <title>ADLS</title>
+<meta charset="UTF-8">
+<title>ADLS</title>
 </head>
 
 <body>
-    <section layout:fragment="content">
-        this is ADLS lol <span th:text="${sidepane}"></span>
-    </section>
+	<section layout:fragment="content">
+		<div class="card shadow mb-4">
+			<div class="card-header py-3">
+				<h6 class="m-0 font-weight-bold text-primary">List of ADLS
+					Clusters</h6>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<div id="dataTable_wrapper"
+						class="dataTables_wrapper dt-bootstrap4">
+						<div class="row">
+							<div class="col-sm-12">
+								<table class="table table-bordered dataTable" id="dataTable"
+									role="grid" aria-describedby="dataTable_info"
+									style="width: 100%;" width="100%">
+									<thead>
+										<tr role="row">
+											<th>Cluster Name</th>
+											<th>Account Name</th>
+											<th>Cluster ID</th>
+											<th>Base Directory</th>
+											<th>AuthEndPoint</th>
+											<th></th>
+										</tr>
+									</thead>
+									<tbody>
+										<th:block th:each="adls : ${adlsDetails}">
+											<tr role="row">
+												<td><a th:href="'adls/view/'+${adls.id}" th:text="${adls.ClusterName}"></a></td>
+												<td th:text="${adls.AccountName}"></td>
+												<td th:text="${adls.ClientID}"></td>
+												<td th:text="${adls.BaseDir}"></td>
+												<td th:text="${adls.AuthEndPoint}"></td>
+												<td><a th:href="'adls/delete/'+${adls.id}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+											</tr>
+										</th:block>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
 </body>
 
 </html>

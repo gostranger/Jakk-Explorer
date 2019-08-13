@@ -1,12 +1,16 @@
 package com.bmaster.StreamingWebUI.Models.adls;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class AdlsModel {
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
+	private String ClusterName;
 	private String AccountName;
 	private String ClientID;
 	private String Key;
@@ -14,14 +18,8 @@ public class AdlsModel {
 	private String AuthEndPoint;
 	
 	
-	public AdlsModel(int id, String accountName, String clientID, String key, String baseDir, String authEndPoint) {
-		this.id = id;
-		AccountName = accountName;
-		ClientID = clientID;
-		Key = key;
-		BaseDir = baseDir;
-		AuthEndPoint = authEndPoint;
-	}
+	public AdlsModel() {}
+	
 	public int getId() {
 		return id;
 	}
@@ -58,7 +56,21 @@ public class AdlsModel {
 	public void setAuthEndPoint(String authEndPoint) {
 		AuthEndPoint = authEndPoint;
 	}
-	
+	public String getClusterName() {
+		return ClusterName;
+	}
+	public void setClusterName(String clusterName) {
+		ClusterName = clusterName;
+	}
+	public AdlsModel(String clusterName, String accountName, String clientID, String key, String baseDir,
+			String authEndPoint) {
+		ClusterName = clusterName;
+		AccountName = accountName;
+		ClientID = clientID;
+		Key = key;
+		BaseDir = baseDir;
+		AuthEndPoint = authEndPoint;
+	}
 	
 	
 }
