@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+
+<head>
+    <meta charset="UTF-8">
+    <title>ADLS</title>
+</head>
+
+<body>
+    <section layout:fragment="content">
+    	<div class="card shadow mb-4">
+    		<div class="card-header py-3">
+    			<h6>Edit Cluster :<b> [[${data.ClusterName}]]</b></h6>
+    		</div>
+    		<div class="card-body">
+    			<form th:action="@{'/adls/update/'+${data.id}}" method="POST">
+        <div class="from-group">
+        <label>Cluster Name :</label>
+        	<input type="text" th:value="${data.ClusterName}" id="ClusterName" name="ClusterName" class="form-control form-control-user" placeholder="Cluster Name" required/>
+        </div>
+        <br/>
+        <div class="from-group">
+        <label>Account Name :</label>
+        	<input type="text" th:value="${data.AccountName}" id="AcName" name="AcName" class="form-control form-control-user" placeholder="Account Name"/>
+        </div>	
+        <br/>
+        <div class="from-group">
+        	<label>Cluster ID :</label><input type="text" th:value="${data.ClientID}" id="ClusterID" name="ClusterID" class="form-control form-control-user" placeholder="Cluster ID"/>
+        </div><br/>
+        <div class="from-group">
+        <label>Key :</label>
+        	<input type="password" th:value="${data.Key}" id="key" name="key" class="form-control form-control-user" placeholder="Key"/>
+        </div><br/>
+        <div class="from-group">
+        <label>Directory :</label>
+        	<input type="text" th:value="${data.BaseDir}" id="Directory" name="Directory" class="form-control form-control-user" placeholder="Directory"/>
+        </div><br/>
+        <div class="from-group">
+        <label>AuthEndPoint :</label>
+        	<input type="text" th:value="${data.AuthEndPoint}" id="AuthEndPoint" name="AuthEndPoint" class="form-control form-control-user" placeholder="AuthEndPoint"/>
+        </div>	<br/>
+        <div class="from-group align-items-center">
+        	<input type="submit" id="submit" class="btn btn-primary form-control-user" value="Submit"/>
+        	<a th:href="@{/adls}" class="btn btn-danger form-control-user" >Cancel</a>
+        </div>
+        </form>
+    		</div>
+    	</div>
+       	
+    </section>
+</body>
+
+</html>

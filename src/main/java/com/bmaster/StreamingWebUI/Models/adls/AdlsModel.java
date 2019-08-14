@@ -71,6 +71,19 @@ public class AdlsModel {
 		BaseDir = baseDir;
 		AuthEndPoint = authEndPoint;
 	}
+
+	public AdlsModel(int id, String clusterName, String accountName, String clientID, String key, String baseDir,
+			String authEndPoint) {
+		this.id = id;
+		ClusterName = clusterName;
+		AccountName = accountName;
+		ClientID = clientID;
+		Key = key;
+		BaseDir = baseDir;
+		AuthEndPoint = authEndPoint;
+	}
+
+	
 	
 	
 }

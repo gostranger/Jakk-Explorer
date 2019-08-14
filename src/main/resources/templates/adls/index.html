@@ -11,8 +11,12 @@
 	<section layout:fragment="content">
 		<div class="card shadow mb-4">
 			<div class="card-header py-3">
-				<h6 class="m-0 font-weight-bold text-primary">List of ADLS
-					Clusters</h6>
+				<h4 class="m-0 font-weight-bold text-primary float-left"><i class="fas fa-server"></i> Cluster List</h4>
+				<a class="float-right btn btn-primary btn-icon-split btn-sm" href="#" data-toggle="modal" data-target="#CreateModal">
+				<span class="icon text-white-50">
+                      <i class="fas fa-plus"></i>
+                    </span>
+                    <span class="text">Create</span></a>
 			</div>
 			<div class="card-body">
 				<div class="table-responsive">
@@ -37,11 +41,11 @@
 										<th:block th:each="adls : ${adlsDetails}">
 											<tr role="row">
 												<td><a th:href="'adls/view/'+${adls.id}" th:text="${adls.ClusterName}"></a></td>
-												<td th:text="${adls.AccountName}"></td>
-												<td th:text="${adls.ClientID}"></td>
-												<td th:text="${adls.BaseDir}"></td>
-												<td th:text="${adls.AuthEndPoint}"></td>
-												<td><a th:href="'adls/delete/'+${adls.id}"><i class="fas fa-trash-alt text-danger"></i></a></td>
+												<td ><span class="d-inline-block text-truncate" style="max-width: 100px;" th:text="${adls.AccountName}"></span></td>
+												<td ><span class="d-inline-block text-truncate" style="max-width: 100px;" th:text="${adls.ClientID}"></span></td>
+												<td ><span class="d-inline-block text-truncate" style="max-width: 100px;"  th:text="${adls.BaseDir}"></span></td>
+												<td ><span class="d-inline-block text-truncate" style="max-width: 120px;" th:text="${adls.AuthEndPoint}"></span></td>
+												<td><a th:href="'adls/edit/'+${adls.id}"><i class="fas fa-edit text-primary"></i></a>&nbsp;<a th:href="'adls/delete/'+${adls.id}"><i class="fas fa-trash-alt text-danger"></i></a></td>
 											</tr>
 										</th:block>
 									</tbody>
@@ -52,6 +56,53 @@
 				</div>
 			</div>
 		</div>
+		<div class="modal" id="CreateModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Cluster</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        <form th:action="@{/adls}" method="POST">
+        <div class="from-group">
+        	<input type="text" id="ClusterName" name="ClusterName" class="form-control form-control-user" placeholder="Cluster Name"/>
+        </div>
+        <br/>
+        <div class="from-group">
+        	<input type="text" id="AcName" name="AcName" class="form-control form-control-user" placeholder="Account Name"/>
+        </div>	
+        <br/>
+        <div class="from-group">
+        	<input type="text" id="ClusterID" name="ClusterID" class="form-control form-control-user" placeholder="Cluster ID"/>
+        </div><br/>
+        <div class="from-group">
+        	<input type="password" id="key" name="key" class="form-control form-control-user" placeholder="Key"/>
+        </div><br/>
+        <div class="from-group">
+        	<input type="text" id="Directory" name="Directory" class="form-control form-control-user" placeholder="Directory"/>
+        </div><br/>
+        <div class="from-group">
+        	<input type="text" id="AuthEndPoint" name="AuthEndPoint" class="form-control form-control-user" placeholder="AuthEndPoint"/>
+        </div>	<br/>
+        <div class="from-group align-items-center">
+        	<input type="submit" id="submit" class="btn btn-primary form-control-user" value="Submit"/>
+        </div>
+        </form>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
 	</section>
 </body>
 

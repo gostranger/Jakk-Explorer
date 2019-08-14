@@ -15,7 +15,7 @@ public class CustomErrorController implements ErrorController {
 	@RequestMapping("/error")
 	public String errorPage(Model model,HttpServletRequest request) {
 		Object status =  request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-		String errorCode="UnKnown";
+		String errorCode=status.toString();
 		model.addAttribute("errorCode", errorCode);
 		model.addAttribute("errorCodeText", "Something went Wrong!");
 		if(status!=null) {
@@ -28,6 +28,10 @@ public class CustomErrorController implements ErrorController {
 	        else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
 	        	model.addAttribute("errorCode", statusCode);
 	    		model.addAttribute("errorCodeText", "Internal Server Error!");
+	        }
+	        else if(statusCode == HttpStatus.BAD_REQUEST.value()) {
+	        	model.addAttribute("errorCode", statusCode);
+	    		model.addAttribute("errorCodeText", "Bad Request Error!");
 	        }
 		}
 		return "error.html";

@@ -23,22 +23,22 @@
 
   <!-- Page Wrapper -->
   <div id="wrapper">
-    <div th:if="${sidepane=='dashboard'}">
+    <div th:if="${sidepane=='dashboard'}" th:remove="tag">
         <div th:replace="fragments/sidepanel :: sidepane_dashboard"></div>
     </div>
-    <div th:if="${sidepane=='kafka'}">
+    <div th:if="${sidepane=='kafka'}" th:remove="tag">
         <div th:replace="fragments/sidepanel :: sidepane_kafka"></div>
     </div>
-    <div th:if="${sidepane=='jms'}">
+    <div th:if="${sidepane=='jms'}" th:remove="tag">
         <div th:replace="fragments/sidepanel :: sidepane_jms"></div>
     </div>
-    <div th:if="${sidepane=='adls'}">
+    <div th:if="${sidepane=='adls'}" th:remove="tag">
         <div th:replace="fragments/sidepanel :: sidepane_adls"></div>
     </div>
-    <div th:if="${sidepane=='kinesis'}">
+    <div th:if="${sidepane=='kinesis'}" th:remove="tag">
         <div th:replace="fragments/sidepanel :: sidepane_kinesis"></div>
     </div>
-    <div th:if="${sidepane=='hdfs'}">
+    <div th:if="${sidepane=='hdfs'}" th:remove="tag">
       <div th:replace="fragments/sidepanel :: sidepane_hdfs"></div>
   </div>
     <!-- Sidebar -->
