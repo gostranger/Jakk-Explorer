@@ -1,5 +1,7 @@
 package com.bmaster.StreamingWebUI.Controller.adls;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.bmaster.StreamingWebUI.Models.adls.AdlsModel;
 import com.bmaster.StreamingWebUI.Repository.adls.AdlsRepository;
+import com.bmaster.StreamingWebUI.Util.adls.AdlsClientProvider;
+import com.bmaster.StreamingWebUI.Util.adls.AdlsPathBuilder;
 
 @Controller
 @RequestMapping(path="/adls")
@@ -17,6 +21,10 @@ public class AdlsController {
 	
 	@Autowired
 	AdlsRepository adlsRepo;
+   
+	AdlsClientProvider acp;
+	@Autowired
+	AdlsPathBuilder apath;
 	
 	@RequestMapping(path="",method=RequestMethod.GET)
 	public String adlsRoot(Model model) {
@@ -54,6 +62,13 @@ public class AdlsController {
 	@RequestMapping(path="/view/{id}",method=RequestMethod.GET)
 	public String adlsView(@PathVariable("id") int id,Model model) {
 		model.addAttribute("sidepane","adls");
+		apath.AdlsPathAppend(adlsRepo.findById(id).get().getBaseDir());
+		apath.AdlsPathAppend("mag");
+		apath.AdlsPathAppend("toy");
+		apath.AdlsPathBack();
+		apath.AdlsPathBack();
+		apath.AdlsPathBack();
+		model.addAttribute("dir",apath.toString());
 		return "adls/view.html";
 	}
 	
