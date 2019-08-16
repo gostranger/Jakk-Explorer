@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.bmaster.StreamingWebUI.Models.adls.AdlsModel;
 import com.bmaster.StreamingWebUI.Repository.adls.AdlsRepository;
 import com.bmaster.StreamingWebUI.Util.adls.AdlsClientProvider;
+import com.bmaster.StreamingWebUI.Util.adls.AdlsDirObj;
 import com.bmaster.StreamingWebUI.Util.adls.AdlsPathBuilder;
 
 @Controller
@@ -21,16 +22,22 @@ public class AdlsController {
 	
 	@Autowired
 	AdlsRepository adlsRepo;
-   
+	
 	AdlsClientProvider acp;
-	@Autowired
-	AdlsPathBuilder apath;
+
 	
 	@RequestMapping(path="",method=RequestMethod.GET)
 	public String adlsRoot(Model model) {
 		model.addAttribute("sidepane","adls");
 		model.addAttribute("adlsDetails", adlsRepo.findAll());
 		return "adls/index.html";
+	}
+	
+	@RequestMapping(path="/clusters",method=RequestMethod.GET)
+	public String adlsClusters(Model model) {
+		model.addAttribute("sidepane","adls");
+		model.addAttribute("adlsDetails", adlsRepo.findAll());
+		return "adls/clusters.html";
 	}
 	
 	@RequestMapping(path="",method=RequestMethod.POST)
@@ -62,13 +69,10 @@ public class AdlsController {
 	@RequestMapping(path="/view/{id}",method=RequestMethod.GET)
 	public String adlsView(@PathVariable("id") int id,Model model) {
 		model.addAttribute("sidepane","adls");
-		apath.AdlsPathAppend(adlsRepo.findById(id).get().getBaseDir());
-		apath.AdlsPathAppend("mag");
-		apath.AdlsPathAppend("toy");
-		apath.AdlsPathBack();
-		apath.AdlsPathBack();
-		apath.AdlsPathBack();
-		model.addAttribute("dir",apath.toString());
+		acp = new AdlsClientProvider(adlsRepo.findById(id).get());
+		model.addAttribute("id",id);
+		model.addAttribute("rootPath",adlsRepo.findById(id).get().getBaseDir());
+		model.addAttribute("dir",acp.commandDir(adlsRepo.findById(id).get().getBaseDir()));
 		return "adls/view.html";
 	}
 	

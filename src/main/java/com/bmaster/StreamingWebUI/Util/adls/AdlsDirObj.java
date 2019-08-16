@@ -15,6 +15,7 @@ public class AdlsDirObj {
 	public String user;
 	public boolean file;
 	public Date expire;
+	public String fullpath;
 	
 
 	
@@ -27,6 +28,13 @@ public class AdlsDirObj {
 		this.user = de.user;
 		this.file = (de.type.toString().equals("FILE"))?true:false;
 		this.expire = de.expiryTime;
+		this.fullpath = de.fullName;
+	}
+	public String getFullpath() {
+		return fullpath;
+	}
+	public void setFullpath(String fullpath) {
+		this.fullpath = fullpath;
 	}
 	public Date getExpire() {
 		return expire;

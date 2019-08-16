@@ -1,6 +1,8 @@
 package com.bmaster.StreamingWebUI.Util.adls;
 
+
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -20,15 +22,23 @@ public class AdlsClientProvider {
 		provider = new ClientCredsTokenProvider(data.getAuthEndPoint(), data.getClientID(), data.getKey());
 		client = ADLStoreClient.createClient(data.getAccountName()+".azuredatalakestore.net",provider);
 	}
+	
 	public ADLStoreClient getClient() {
 		return client;
 	}
+	
 	public void setClient(ADLStoreClient client) {
 		this.client = client;
 	}
-	public List<DirectoryEntry> commandDir(String path){
+	
+	public List<AdlsDirObj> commandDir(String path){
 		try {
-			return client.enumerateDirectory(path);
+			List<AdlsDirObj> adoList = new LinkedList<AdlsDirObj>();
+			List<DirectoryEntry> DirList = client.enumerateDirectory(path);
+			for(DirectoryEntry dir : DirList) {
+				adoList.add(new AdlsDirObj(dir));
+			}
+			return adoList;
 		} catch (IOException e) {
 			return null;
 		}
