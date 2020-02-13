@@ -44,6 +44,9 @@
 		<div th:if="${sidepane=='hdfs'}" th:remove="tag">
 			<div th:replace="fragments/sidepanel :: sidepane_hdfs"></div>
 		</div>
+		<div th:if="${sidepane=='eventhub'}" th:remove="tag">
+			<div th:replace="fragments/sidepanel :: sidepane_eventhub"></div>
+		</div>
 		<!-- Sidebar -->
 
 		<!-- Content Wrapper -->

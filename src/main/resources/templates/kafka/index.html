@@ -9,8 +9,18 @@
 
 <body>
     <section layout:fragment="content">
-        this is kafka lol <span th:text="${sidepane}"></span>
-        <span th:text="${ab}"></span>
+        <div class="row">
+			<div class="col-xl-3 col-md-6 mb-4" th:each="kafka : ${kafkaDetails}">
+				<a class="nav-link" th:href="'eventhub/view/'+${kafka.id}">
+					<div class="card bg-primary text-white shadow">
+						<div class="card-body">
+							<i class="fas fa-server"></i> [[${kafka.ClusterName}]]
+							<div class="text-white-50 small">Kafka Broker: [[${kafka.kafkaBorker}]]</div>
+						</div>
+					</div>
+				</a>
+			</div>
+		</div>
     </section>
 </body>
 

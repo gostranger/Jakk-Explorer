@@ -33,7 +33,7 @@
 									<tbody>
 										<th:block th:each="adlsDO : ${dir}">
 											<tr role="row">
-												<td><a th:href="'adls/view/'+${id}+'?fpath='+${adlsDO.fullpath}" th:text="${adlsDO.name}"></a></td>
+												<td><img th:src="${adlsDO.file? '/img/file.png' : '/img/folder.png'}" style="height: 18px"/>&nbsp;<a th:href="'adls/view/'+${id}+'?fpath='+${adlsDO.fullpath}" th:text="${adlsDO.name}"></a></td>
 												<td ><span class="d-inline-block text-truncate" style="max-width: 100px;" th:text="${adlsDO.permission}"></span></td>
 												<td ><span class="d-inline-block text-truncate" style="max-width: 100px;" th:text="${adlsDO.length}"></span></td>
 												<td><a><i class="fas fa-edit text-primary"></i></a>&nbsp;<a><i class="fas fa-trash-alt text-danger"></i></a></td>

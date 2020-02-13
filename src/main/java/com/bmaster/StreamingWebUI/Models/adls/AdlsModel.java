@@ -82,8 +82,5 @@ public class AdlsModel {
 		BaseDir = baseDir;
 		AuthEndPoint = authEndPoint;
 	}
-
-	
-	
 	
 }
